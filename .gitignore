@@ -1,0 +1,8 @@
+.env
+*.db
+media/
+credentials.json
+token.json 
+API_GROK
+API_CHATGPT
+API_GEMINI 

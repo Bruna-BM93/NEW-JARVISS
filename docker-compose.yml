@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: jarviss
+      POSTGRES_USER: jarviss
+      POSTGRES_PASSWORD: senha_segura
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://jarviss:SenhaForte123!@db:5432/jarviss
+      SECRET_KEY: 8f7e2b1c-4e2a-4b7e-9c2e-1a2b3c4d5e6f
+      JWT_SECRET_KEY: 7c6f1e2d-3b4a-5c6d-7e8f-9a0b1c2d3e4f
+      WHATSAPP_TOKEN: EAAJ...EXEMPLO_TOKEN...QZDZD
+      WHATSAPP_PHONE_ID: 123456789012345
+      OPENAI_API_KEY: sk-EXEMPLO-CHAVE-OPENAI
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./media:/app/media  # Para persistir mídias recebidas
+
+volumes:
+  pgdata: 

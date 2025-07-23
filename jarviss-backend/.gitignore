@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+venv/
+ENV/
+.env
+.env.*
+
+# SQLite
+*.db
+
+# VSCode
+.vscode/
+
+# Testes
+.coverage
+htmlcov/
+
+# Outros
+.DS_Store 
